@@ -3,124 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IXS-01 Lite - STEM Globe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
-
+<title>IXS-01 Lite | STEM Globe</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color:#fff;
-  line-height:1.7;
-}
-header {
-  position:fixed; width:100%; top:0; left:0; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); z-index:1000;
-}
-nav { display:flex; justify-content:space-between; align-items:center; max-width:100%; margin:auto; padding:12px 15px; }
-nav .logo { font-size:1.6rem; font-weight:700; text-shadow:0 0 10px #0ff; }
-nav ul { list-style:none; display:flex; gap:15px; flex-wrap:wrap; }
-nav ul li a { text-decoration:none; color:#0ff; font-weight:500; font-size:0.95rem; transition:0.3s; }
-nav ul li a:hover { color:#fff; text-shadow:0 0 8px #0ff; }
+  /* Reset */
+  * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
+  body {background: linear-gradient(135deg,#0f3,#0a0,#050);color:#fff;transition:0.5s;overflow-x:hidden;}
 
-.hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 15px; }
-.hero h1 { font-size:2.4rem; text-shadow:0 0 15px #0ff, 0 0 30px #0ff77; margin-bottom:18px; }
-.hero p { font-size:1.1rem; margin-bottom:25px; max-width:90%; }
-.hero .btn { padding:12px 28px; font-size:1rem; font-weight:600; border-radius:10px; border:2px solid #0ff; color:#0ff; background:transparent; text-decoration:none; transition:0.3s; position:relative; overflow:hidden; }
-.hero .btn:hover { color:#000; background:#0ff; box-shadow:0 0 15px #0ff,0 0 25px #0ff77; }
+  /* Navbar */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1.5rem;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);}
+  nav .logo{font-weight:bold;font-size:1.5rem;}
+  nav .nav-links button{background:none;border:none;color:#fff;margin-left:0.5rem;font-size:0.9rem;cursor:pointer;transition:0.3s;}
+  nav .nav-links button:hover{color:#0f0;text-shadow:0 0 6px #0f0;}
 
-section { padding:80px 15px; max-width:95%; margin:auto; }
-.glass-card { backdrop-filter: blur(12px); background: rgba(255,255,255,0.05); border-radius:18px; padding:35px; margin:40px 0; box-shadow:0 0 18px rgba(255,255,255,0.1); }
+  /* Hero */
+  .hero{height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 1rem;}
+  .hero h1{font-size:2rem;margin-bottom:0.8rem;text-shadow:0 0 8px #0f0;}
+  .hero p{font-size:1rem;max-width:400px;margin-bottom:1.5rem;line-height:1.4;}
+  .hero button{padding:0.6rem 1.5rem;font-size:1rem;border:none;border-radius:10px;background:rgba(0,255,0,0.2);color:#fff;cursor:pointer;transition:0.3s;backdrop-filter:blur(10px);}
+  .hero button:hover{background:rgba(0,255,0,0.4);box-shadow:0 0 10px #0f0;}
 
-.image-section { display:flex; flex-direction:column; align-items:center; gap:25px; margin-top:25px; }
-.image-section img { width:90%; border-radius:18px; box-shadow:0 0 15px rgba(0,255,255,0.3); }
+  /* Sections */
+  section{display:none;padding:3rem 1.5rem;min-height:80vh;}
+  section.active{display:block;animation:fadeIn 0.5s ease-in-out;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-.dev-links { display:flex; justify-content:center; gap:20px; margin-top:20px; }
-.dev-links a { color:#0ff; font-size:1.4rem; transition:0.3s; }
+  h2{font-size:1.8rem;margin-bottom:1rem;text-shadow:0 0 6px #0f0;}
+  p{margin-bottom:0.8rem;line-height:1.4;}
 
-footer { text-align:center; margin:40px 0 20px 0; font-size:0.9rem; color:#0ff88; }
+  /* Glass cards */
+  .card{background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);padding:1.5rem;border-radius:12px;margin:1rem 0;}
 
-html { scroll-behavior:smooth; }
+  /* Images */
+  .preview-images{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+  .preview-images img{width:200px;border-radius:10px;box-shadow:0 0 10px #0f0;}
+
+  /* Contact buttons/icons */
+  .contacts{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem;}
+  .contacts a{color:#fff;text-decoration:none;font-size:0.9rem;padding:0.5rem 0.8rem;background:rgba(0,255,0,0.2);border-radius:8px;transition:0.3s;backdrop-filter:blur(8px);}
+  .contacts a:hover{background:rgba(0,255,0,0.4);box-shadow:0 0 8px #0f0;}
+
+  /* Footer */
+  footer{text-align:center;padding:1.5rem;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);font-size:0.8rem;}
+
+  /* Back button */
+  .backBtn{margin-top:1.5rem;padding:0.5rem 1rem;border:none;border-radius:10px;background:rgba(0,255,0,0.2);color:#fff;cursor:pointer;transition:0.3s;backdrop-filter:blur(8px);}
+  .backBtn:hover{background:rgba(0,255,0,0.4);box-shadow:0 0 8px #0f0;}
 </style>
 </head>
 <body>
 
-<header>
-  <nav>
-    <div class="logo">IXS-01 Lite</div>
-    <ul>
-      <li><a href="#use">Use IXS-01</a></li>
-      <li><a href="#howto">How to Use</a></li>
-      <li><a href="#developer">Developer</a></li>
-      <li><a href="#terms">Terms & Policy</a></li>
-    </ul>
-  </nav>
-</header>
+<!-- Navbar -->
+<nav>
+  <div class="logo">IXS-01 Lite</div>
+  <div class="nav-links">
+    <button onclick="showSection('use')">Use</button>
+    <button onclick="showSection('how')">How</button>
+    <button onclick="showSection('developer')">Developer</button>
+    <button onclick="showSection('terms')">Terms</button>
+  </div>
+</nav>
 
-<section class="hero" id="landing">
-  <h1>IXS-01</h1>
-  <p>IXS-01 is an intelligent experience server designed to help everyone gain insights, automate workflows, and access AI-driven capabilities from any device seamlessly.</p>
-  <a href="mailto:stemglobe.official@gamil.com" class="btn">Contact Us</a>
-</section>
+<!-- Hero Section -->
+<div class="hero" id="hero">
+  <h1>IXS-01 Lite</h1>
+  <p>Experience the autonomous server for mobile and small devices. Fully intelligent, fully local, fully yours.</p>
+  <button onclick="showSection('use')">Get Started</button>
+</div>
+
+<!-- Sections -->
 
 <section id="use">
-  <div class="glass-card">
-    <h2>Use IXS-01</h2>
-    <p>Access tools for automation, insights, and intelligent data handling. IXS-01 adapts to your workflow, helping with tasks ranging from personal projects to enterprise-scale operations.</p>
-  </div>
-</section>
-
-<section id="howto">
-  <div class="glass-card">
-    <h2>How to Use</h2>
-    <p>Open IXS-01 from your mobile browser or desktop. No installation needed. Preview images illustrate the interface for each device:</p>
-    <div class="image-section">
-      <img src="full.png" alt="Desktop Preview">
-      <img src="lite.png" alt="Mobile Preview">
+  <h2>Use IXS-01 Lite</h2>
+  <div class="card">
+    <p>IXS-01 Lite delivers the same intelligence and autonomy as desktop but optimized for mobile performance. Launch, interact, and get insights instantly.</p>
+    <div class="preview-images">
+      <img src="lite.png" alt="Mobile preview">
     </div>
   </div>
+  <button class="backBtn" onclick="goHome()">Back</button>
+</section>
+
+<section id="how">
+  <h2>How to Use</h2>
+  <div class="card">
+    <p>1. Open the mobile-friendly interface.<br>
+       2. Configure your server.<br>
+       3. Launch and interact via touch-friendly interface.<br>
+       4. Monitor outputs and insights on mobile.<br>
+       5. All interactions remain private and local.</p>
+    <div class="preview-images">
+      <img src="lite.png" alt="Mobile preview">
+    </div>
+  </div>
+  <button class="backBtn" onclick="goHome()">Back</button>
 </section>
 
 <section id="developer">
-  <div class="glass-card">
-    <h2>Developer</h2>
-    <p>I am Naren Hullatti, CEO of STEM Globe. IXS-01 reflects my work in AI, intelligent servers, and futuristic productivity tools accessible to all users.</p>
-    <div class="dev-links">
-      <a href="mailto:narenhullatti.ceo.stemglobe@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/naren-hullatti-b68054387" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://instagram.com/naren_hullatti" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://discord.com/users/1421752443867238463" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://x.com/CeoStemglobe" target="_blank"><i class="fab fa-twitter"></i></a>
+  <h2>Developer</h2>
+  <div class="card">
+    <p>Developed by <strong>Naren Hullatti</strong>, CEO of STEM Globe. Specialized in autonomous servers and mobile-optimized AI-inspired computation.</p>
+    <div class="contacts">
+      <a href="mailto:narenhullatti.ceo.stemglobe@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/naren-hullatti-b68054387" target="_blank">LinkedIn</a>
+      <a href="https://instagram.com/naren_hullatti" target="_blank">Instagram</a>
+      <a href="https://discord.com/users/1421752443867238463" target="_blank">Discord</a>
+      <a href="https://x.com/CeoStemglobe" target="_blank">Twitter</a>
     </div>
-    <ul style="text-align:center; list-style:none; margin-top:12px;">
-      <li><a href="http://stem-globe-matrix.github.io/stem-globe" target="_blank">STEM Globe</a></li>
-      <li><a href="https://stem-globe-matrix.github.io/nexora-dataforge/" target="_blank">NEXORA Data Forge</a></li>
-      <li><a href="https://stem-globe-matrix.github.io/ARIS" target="_blank">ARIS</a></li>
-    </ul>
+    <div class="preview-images">
+      <img src="lite.png" alt="Mobile preview">
+    </div>
   </div>
+  <button class="backBtn" onclick="goHome()">Back</button>
 </section>
 
 <section id="terms">
-  <div class="glass-card">
-    <h2>Terms & Policy</h2>
-    <p>Using IXS-01 means full acceptance of the following rules:</p>
-    <ul>
-      <li>Responsible Usage: Any attempt to misuse, manipulate, or disrupt the service may result in immediate suspension.</li>
-      <li>Data Collection: All data and interactions are logged for research, security, and service optimization purposes.</li>
-      <li>No Guarantee: IXS-01 offers intelligent suggestions; no result or recommendation is guaranteed.</li>
-      <li>Intellectual Property: Unauthorized copying, redistribution, or modification of IXS-01 software or content is prohibited.</li>
-      <li>Privacy Protection: All personal data is safeguarded; no sharing occurs outside legal requirements.</li>
-      <li>Legal Compliance: Using IXS-01 for illegal, malicious, or harmful purposes is strictly forbidden.</li>
-      <li>Liability Limitation: STEM Globe holds no responsibility for damages arising from use or misuse of IXS-01.</li>
-    </ul>
+  <h2>Terms & Policy</h2>
+  <div class="card">
+    <p><strong>Strict Terms:</strong> Users are responsible for legal compliance when using IXS-01 Lite.</p>
+    <p><strong>Privacy:</strong> All data stays on your mobile device. No third-party sharing.</p>
+    <p><strong>Professional Conduct:</strong> Ethical use is mandatory. Redistribution is prohibited.</p>
+    <p><strong>Disclaimer:</strong> Provided as-is. STEM Globe holds no liability for misuse.</p>
   </div>
+  <button class="backBtn" onclick="goHome()">Back</button>
 </section>
 
 <footer>
   Product of STEM Globe &copy; 2026 | Developed by STEM Nucleus
 </footer>
+
+<script>
+function showSection(id){
+  document.getElementById('hero').style.display='none';
+  document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function goHome(){
+  document.getElementById('hero').style.display='flex';
+  document.querySelectorAll('section').forEach(sec=>sec.classList.remove('active'));
+}
+</script>
 
 </body>
 </html>
