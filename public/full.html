@@ -1,160 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IXS-01 - Coming Soon</title>
-  <style>
-    /* Magic gradient background */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IXS-01 - STEM Globe</title>
 
-    /* Glassmorphism container */
-    .glass-card {
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 50px auto;
-      max-width: 1000px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 
-    .glass-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 40px rgba(255,255,255,0.2);
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color:#fff;
+  line-height:1.7;
+}
+header {
+  position:fixed; width:100%; top:0; left:0; background: rgba(0,0,0,0.65); backdrop-filter: blur(12px); z-index:1000;
+}
+nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:15px 30px; }
+nav .logo { font-size:1.9rem; font-weight:700; text-shadow:0 0 15px #0ff; }
+nav ul { list-style:none; display:flex; gap:25px; }
+nav ul li a { text-decoration:none; color:#0ff; font-weight:500; transition:0.3s; }
+nav ul li a:hover { color:#fff; text-shadow:0 0 12px #0ff; }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px #0ff, 0 0 40px #0ff66;
-    }
+.hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px; background:linear-gradient(135deg, rgba(15,32,39,0.9), rgba(44,83,100,0.9)); }
+.hero h1 { font-size:3.2rem; text-shadow: 0 0 20px #0ff, 0 0 40px #0ff77; margin-bottom:25px; }
+.hero p { font-size:1.3rem; margin-bottom:35px; max-width:800px; }
+.hero .btn { padding:16px 35px; font-size:1.15rem; font-weight:600; border-radius:12px; border:2px solid #0ff; color:#0ff; background:transparent; text-decoration:none; transition:0.3s; position:relative; overflow:hidden; }
+.hero .btn:hover { color:#000; background:#0ff; box-shadow:0 0 20px #0ff, 0 0 40px #0ff77; }
+.hero .btn::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background: rgba(255,255,255,0.2); transform: skewX(-20deg); transition:0.5s; }
+.hero .btn:hover::after { left:100%; }
 
-    h2 {
-      margin-top: 40px;
-      font-size: 2rem;
-      text-align: center;
-      text-shadow: 0 0 15px #0ff88;
-    }
+section { padding:100px 20px; max-width:1200px; margin:auto; }
+.glass-card { backdrop-filter: blur(14px); background: rgba(255,255,255,0.05); border-radius:20px; padding:50px; margin:50px 0; box-shadow:0 0 20px rgba(255,255,255,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.glass-card:hover { transform: translateY(-10px); box-shadow:0 0 40px rgba(255,255,255,0.2); }
+h2 { font-size:2.2rem; text-align:center; margin-bottom:20px; text-shadow:0 0 15px #0ff88; }
+p { font-size:1.15rem; margin-bottom:12px; text-align:center; }
 
-    p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
+.image-section { display:flex; justify-content:center; gap:50px; margin-top:30px; flex-wrap:wrap; }
+.image-section img { max-width:450px; border-radius:20px; box-shadow:0 0 20px rgba(0,255,255,0.3); transition: transform 0.3s ease; }
+.image-section img:hover { transform: scale(1.06); }
 
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 15px 30px;
-      margin: 20px 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      color: #0ff;
-      border: 2px solid #0ff;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+.dev-links { display:flex; justify-content:center; gap:25px; margin-top:25px; }
+.dev-links a { color:#0ff; font-size:1.6rem; transition:0.3s; }
+.dev-links a:hover { color:#fff; }
 
-    .btn:hover {
-      color: #000;
-      background: #0ff;
-      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff77;
-    }
+footer { text-align:center; margin:50px 0 20px 0; font-size:0.95rem; color:#0ff88; }
 
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.2);
-      transform: skewX(-20deg);
-      transition: 0.5s;
-    }
+html { scroll-behavior:smooth; }
 
-    .btn:hover::after {
-      left: 100%;
-    }
-
-    /* Image section */
-    .image-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin: 40px 0;
-    }
-
-    .image-section img {
-      max-width: 400px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .image-section img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin: 50px 0 20px 0;
-      font-size: 0.9rem;
-      color: #0ff88;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px){
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.5rem; }
-      .image-section img { max-width: 90%; }
-    }
-  </style>
+@media(max-width:1024px){
+  .hero h1 { font-size:2.8rem; }
+  .hero p { font-size:1.2rem; max-width:600px; }
+  .image-section img { max-width:80%; }
+}
+</style>
 </head>
 <body>
 
-  <div class="glass-card">
-    <h1>IXS-01</h1>
-    <p style="text-align:center; font-size:1.2rem;">Intelligent Experience Server - Coming Very Soon!</p>
-    <div style="text-align:center;">
-      <a href="mailto:stemglobe.official@gamil.com" class="btn">Contact Us</a>
-    </div>
-  </div>
+<header>
+  <nav>
+    <div class="logo">IXS-01</div>
+    <ul>
+      <li><a href="#use">Use IXS-01</a></li>
+      <li><a href="#howto">How to Use</a></li>
+      <li><a href="#developer">Developer</a></li>
+      <li><a href="#terms">Terms & Policy</a></li>
+    </ul>
+  </nav>
+</header>
 
+<section class="hero" id="landing">
+  <h1>IXS-01</h1>
+  <p>IXS-01 is your intelligent experience server, delivering seamless automation, dynamic insights, and secure interactions. Designed for individuals and enterprises, it elevates productivity, connectivity, and AI-driven decision-making.</p>
+  <a href="mailto:stemglobe.official@gamil.com" class="btn">Contact Us</a>
+</section>
+
+<section id="use">
   <div class="glass-card">
-    <h2>How to Use IXS-01</h2>
-    <p style="text-align:center;">IXS-01 works seamlessly on both desktop and mobile devices. Here’s a preview:</p>
+    <h2>Use IXS-01</h2>
+    <p>IXS-01 provides users with cutting-edge tools to manage data, receive insights, automate repetitive tasks, and create intelligent workflows. Whether personal projects or enterprise-scale operations, IXS-01 adapts dynamically to your needs.</p>
+  </div>
+</section>
+
+<section id="howto">
+  <div class="glass-card">
+    <h2>How to Use</h2>
+    <p>Use IXS-01 on desktop or mobile. Simply access it through your browser. It works seamlessly without installation. Below is a preview of how it appears on different devices:</p>
     <div class="image-section">
       <img src="full.png" alt="Desktop Preview">
       <img src="lite.png" alt="Mobile Preview">
     </div>
   </div>
+</section>
 
+<section id="developer">
+  <div class="glass-card">
+    <h2>Developer</h2>
+    <p>I am Naren Hullatti, CEO of STEM Globe. I build advanced AI platforms, intelligent servers, and next-generation tools for innovation and productivity. IXS-01 represents a vision of autonomous intelligent systems accessible to everyone.</p>
+    <div class="dev-links">
+      <a href="mailto:narenhullatti.ceo.stemglobe@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/naren-hullatti-b68054387" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://instagram.com/naren_hullatti" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.com/users/1421752443867238463" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://x.com/CeoStemglobe" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+    <ul style="text-align:center; list-style:none; margin-top:15px;">
+      <li><a href="http://stem-globe-matrix.github.io/stem-globe" target="_blank">STEM Globe</a></li>
+      <li><a href="https://stem-globe-matrix.github.io/nexora-dataforge/" target="_blank">NEXORA Data Forge</a></li>
+      <li><a href="https://stem-globe-matrix.github.io/ARIS" target="_blank">ARIS</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="terms">
   <div class="glass-card">
     <h2>Terms & Policy</h2>
-    <p>
-      By accessing IXS-01, you agree to use it responsibly. STEM Globe is not responsible for misuse.
-      All interactions are stored for improving service. Please respect privacy and intellectual property.
-    </p>
+    <p>By using IXS-01, you accept these terms fully:</p>
+    <ul>
+      <li>Responsible Usage: Users must use IXS-01 responsibly. Misuse or malicious activity may lead to permanent suspension.</li>
+      <li>Data Handling: All data, interactions, and analytics are logged for improvement, security, and legal compliance purposes.</li>
+      <li>No Guarantees: IXS-01 provides intelligent recommendations but cannot guarantee outcomes. All results are informational.</li>
+      <li>IP & Content: Intellectual property is protected. Do not copy, redistribute, or modify proprietary software or content without permission.</li>
+      <li>Privacy: Personal information is securely handled. Data sharing with third parties is prohibited unless legally mandated.</li>
+      <li>Legal Compliance: Use of IXS-01 for illegal or harmful activities is strictly forbidden.</li>
+      <li>Liability: STEM Globe is not liable for any damages, losses, or misuse arising from IXS-01.</li>
+    </ul>
   </div>
+</section>
 
-  <footer>
-    Product of STEM Globe &copy; 2026 | Developed by STEM Nucleus
-  </footer>
+<footer>
+  Product of STEM Globe &copy; 2026 | Developed by STEM Nucleus
+</footer>
 
 </body>
 </html>
